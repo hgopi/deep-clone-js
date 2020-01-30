@@ -80,6 +80,14 @@ function clone(target, map = new WeakMap()) {
         });
     }
 
+    // Clone Map
+    if (type === 'Array') {
+        cloneTarget = new Array();
+        forEach(Object.keys(target), (value, index) => {
+            cloneTarget[index] = clone(value, map);
+        });
+    }
+
     // Clone Object
     if (type === 'Object') {
         cloneTarget = new Object();
